@@ -23,3 +23,9 @@ Feature: documentOverview
     Scenario: Check "noumea.jiff" document overview
     Then  I expect the page url is "http://40.121.33.252/otcs/llisapi.dll?func=ll&objaction=overview&objid=385444"
     And   I expect the element ".title" contains text "noumea.jfif"
+
+    Scenario: Check "More Action" popup
+    Then  I click the element "button.mdc-button.button.button-secondary.dialog-more-actions.mdc-ripple-upgraded"
+    #And   I expect the element "button.mdc-button.mdc-dialog__button.mdc-ripple-upgraded" is visible after "2.5" seconds
+    And   I wait for "3.5" seconds
+    Then  I click the element "button.mdc-button.mdc-dialog__button.mdc-ripple-upgraded"
