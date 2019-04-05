@@ -26,6 +26,8 @@ Feature: documentOverview
 
     Scenario: Check "More Action" popup
     Then  I click the element "button.mdc-button.button.button-secondary.dialog-more-actions.mdc-ripple-upgraded"
-    #And   I expect the element "button.mdc-button.mdc-dialog__button.mdc-ripple-upgraded" is visible after "2.5" seconds
     And   I wait for "3.5" seconds
-    Then  I click the element "button.mdc-button.mdc-dialog__button.mdc-ripple-upgraded"
+    And   I expect the element ".mdc-dialog__actions" is visible
+    And   I expect the element ".mdc-dialog__actions button.mdc-button" is visible
+    #And   I wait for "3.5" seconds
+    #Then  I click the element "button.mdc-button.mdc-dialog__button.mdc-ripple-upgraded"
