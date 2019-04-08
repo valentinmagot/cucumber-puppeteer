@@ -6,6 +6,9 @@ const { After, AfterAll, Before, BeforeAll, Status, setDefaultTimeout, setWorldC
 const FeatureScope = require('./scope/FeatureScope');
 const BrowserScope = require('./scope/BrowserScope');
 const { createFolder } = require('./util/FileSystem');
+const openUrl = require('./action/openUrl');
+const setElementValue = require('./action/setElementValue');
+const  clickElement = require('./action/clickElement');
 
 // Timeout, in milliseconds, for puppeteer actions
 setDefaultTimeout(10 * 1000);
@@ -64,4 +67,13 @@ After(async function(scenario){
 // After all feature tests are complete
 AfterAll(async function() {
   await featureScope.browserScope.close();
+});
+
+//Before scenario with @GCdocs tag
+Before({tags: "@GCdocs"}, function () {
+  // This hook will be executed before scenarios tagged with @foo
+  await openUrl('http://40.121.33.252/otcs/llisapi.dll?func=llworkspace');
+  await setElementValue('#otds_username','valentin');
+  await setElementValue('#otds_password','password');
+  await clickElement('#loginbutton');
 });
