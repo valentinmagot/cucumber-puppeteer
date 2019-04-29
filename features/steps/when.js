@@ -14,7 +14,7 @@ When(
 
 When(
     // Used RegEx since cucumber expressions do not have a good way to do optional capturing groups that return their value
-    /^I click the (?:element|button|link) "([^"]*)?"( and wait for the page to load)?$/, 
+    /^I click the (?:element|button|link) "([^"]*)?"( and wait for the selector "([^"]*)?" to load)?$/, 
     clickElement
 );
 

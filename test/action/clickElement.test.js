@@ -27,14 +27,16 @@ describe('clickElement', () => {
   });  
 
   it('clicks a link element to cause a page navigation', async () => {
-    await clickElement.call(browserScope, 'a.nav', 'causes nav');
+    await clickElement.call(browserScope, 'a.nav', '.foobar');
     await checkUrl.call(browserScope, null, 'http://localhost:8080/checkAttribute.html');
+    await checkContainsText.call(browserScope, '#href', null, 'Some link')
   });
 
   it('clicks a submit button to submit a form', async () => {
     await openUrl.call(browserScope, testUrl);
-    await clickElement.call(browserScope, '[type="submit"]', 'causes nav');
+    await clickElement.call(browserScope, '[type="submit"]', '.wizard');
     await checkUrl.call(browserScope, null, 'http://localhost:8080/checkContainsText.html?listenhere=meow');
+    await checkContainsText.call(browserScope, '.wizard', null, "You're a wizard Harry");
   });    
 
   it('fails if the element does not exist', async () => {
